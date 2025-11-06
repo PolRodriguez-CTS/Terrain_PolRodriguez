@@ -3,16 +3,25 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    //Parámetros
+    //Componentes
     private CharacterController _characterController;
     private Animator _animator;
 
     //Inputs
     private InputAction _moveAction;
+    public Vector2 _moveValue;
+
+    //Camara
+    private Transform _mainCamera;
+    private float _turnSmoothVelocity;
+    private float _smoothTime = 0.2f;
 
     void Awake()
     {
         _characterController = GetComponent<CharacterController>();
+        _animator = GetComponentInChildren<Animator>();
+
+        _moveAction = InputSystem.actions["Move"];
     }
     
     void Start()
@@ -22,6 +31,22 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        
+        _moveValue = _moveAction.ReadValue<Vector2>();
+        Movement();
+    }
+
+    void Movement()
+    {
+        Vector3 direction = new Vector3(_moveValue.x, 0, _moveValue.y);
+
+        _animator.SetFloat("Horizontal", _moveValue.x);
+        _animator.SetFloat("Vertical", _moveValue.y);
+
+        if(direction != Vector3.zero)
+        {
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + _mainCamera.eulerAngles.y;
+            float smoothAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, _smoothTime);
+            transform.rotation = Quaternion.Euler(0, smoothAngle, 0);
+        }
     }
 }
