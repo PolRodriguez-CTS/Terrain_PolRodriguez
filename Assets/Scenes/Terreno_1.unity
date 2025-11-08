@@ -151,6 +151,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 909425454}
+  - {fileID: 494976383}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &349487751
@@ -192,6 +193,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveValue: {x: 0, y: 0}
   _mainCamera: {fileID: 689868911}
+  _sensor: {fileID: 494976383}
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _sensorRadius: 0.46
+--- !u!1 &494976382
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 494976383}
+  m_Layer: 0
+  m_Name: Sensor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &494976383
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494976382}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.051, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 349487750}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &634627410
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -381,7 +418,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 689868908}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.25340134, y: 0.000000027615293, z: -0.0000000072338566, w: 0.9673613}
+  m_LocalRotation: {x: 0.25340134, y: 0.000000019263336, z: -0.000000005046052, w: 0.9673613}
   m_LocalPosition: {x: 383.12277, y: 22.703, z: 533.7111}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -430,7 +467,7 @@ GameObject:
   m_Component:
   - component: {fileID: 909166982}
   - component: {fileID: 909166981}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TerrainGroup_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -731,7 +768,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 942399183}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.25340134, y: 0.000000028600075, z: -0.00000001099326, w: 0.9673613}
+  m_LocalRotation: {x: 0.25340134, y: 0.000000019263336, z: -0.0000000050460516, w: 0.9673613}
   m_LocalPosition: {x: 383.12277, y: 22.703, z: 533.7111}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -877,7 +914,7 @@ GameObject:
   - component: {fileID: 1978540651}
   - component: {fileID: 1978540653}
   - component: {fileID: 1978540652}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Terrain_0_0_5915b380-af80-49e3-923a-da1d45004966
   m_TagString: Untagged
   m_Icon: {fileID: 0}

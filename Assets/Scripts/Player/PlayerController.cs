@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     //Inputs
     private InputAction _moveAction;
     public Vector2 _moveValue;
+    private InputAction _jumpAction;
 
     //Camara
     [SerializeField] private Transform _mainCamera;
@@ -18,6 +19,17 @@ public class PlayerController : MonoBehaviour
 
     //Parámetros
     private float _playerSpeed = 5;
+    private float _playerJump = 2;
+
+    //Gravedad
+    private float _gravity = -9.81f;
+    private Vector3 _playerGravity;
+
+    //GroundSensor
+    [SerializeField] private Transform _sensor;
+    [SerializeField] private LayerMask _groundLayer;
+    [SerializeField] private float _sensorRadius;
+
 
     void Awake()
     {
@@ -25,6 +37,7 @@ public class PlayerController : MonoBehaviour
         _animator = GetComponentInChildren<Animator>();
 
         _moveAction = InputSystem.actions["Move"];
+        _jumpAction = InputSystem.actions["Jump"];
     }
     
     void Start()
@@ -36,6 +49,13 @@ public class PlayerController : MonoBehaviour
     {
         _moveValue = _moveAction.ReadValue<Vector2>();
         Movement();
+
+        if (_jumpAction.WasPressedThisFrame() && IsGrounded())
+        {
+            Jump();
+        }
+
+        Gravity();
     }
 
     void Movement()
@@ -59,16 +79,37 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
-        
+        _animator.SetBool("isJumping", true);
+
+        _playerGravity.y = Mathf.Sqrt(_playerJump * -2 * _gravity);
+
+        _characterController.Move(_playerGravity * Time.deltaTime);
     }
 
     void Gravity()
     {
-        
+        if (!IsGrounded())
+        {
+            _playerGravity.y += _gravity * Time.deltaTime;
+        }
+
+        else if (IsGrounded() && _playerGravity.y < 0)
+        {
+            _playerGravity.y = _gravity;
+            _animator.SetBool("IsJumping", false);
+        }
+
+        _characterController.Move(_playerGravity * Time.deltaTime);
     }
-    
+
     bool IsGrounded()
     {
-        return true;
+        return Physics.CheckSphere(_sensor.position, _sensorRadius, _groundLayer);
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(_sensor.position, _sensorRadius);
     }
 }
