@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4922e30cf93f76e45bf94638677f3f8a
+guid: 9cc096bb937d38147a115b7c2129ae42
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -31,7 +31,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Right_Run
+      name: Luffy_Run_Right
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f8b2e591d7b4aec4a97ad140c3631a29
+guid: 25f3f40f4c131e54f9772848bb1b3017
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -31,7 +31,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Right_Walking
+      name: Luffy_Walk_Backwards
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0

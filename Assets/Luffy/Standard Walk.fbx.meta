@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 57061d0181475f44db0082de6e1e6579
+guid: 44e3a24a20ad6af45af421ebcc68b574
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -31,11 +31,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Left_Run
+      name: Luffy_Walk_Forward
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 20
+      lastFrame: 35
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

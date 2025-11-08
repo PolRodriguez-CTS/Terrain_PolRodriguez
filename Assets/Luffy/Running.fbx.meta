@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 27fe824abb2164047bc04135ef5749d7
+guid: 82092735a35492f419491c3a382fec53
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -31,11 +31,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Backward_run
+      name: Luffy_Run_Forward
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 17
+      lastFrame: 25
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
