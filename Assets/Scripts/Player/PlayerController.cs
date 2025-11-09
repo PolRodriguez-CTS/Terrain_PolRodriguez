@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private float _smoothTime = 0.2f;
 
     //Parámetros
-    private float _playerSpeed = 5;
+    private float _playerSpeed = 8;
     private float _playerJump = 2;
 
     //Gravedad
@@ -30,6 +30,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private float _sensorRadius;
 
+    //DeathZone
+    [SerializeField] private Transform _deathZone;
+    [SerializeField] private LayerMask _deathLayer;
+    [SerializeField] private float _deathZoneRadius;
 
     void Awake()
     {
@@ -79,6 +83,7 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
+        Debug.Log("salto");
         _animator.SetBool("isJumping", true);
 
         _playerGravity.y = Mathf.Sqrt(_playerJump * -2 * _gravity);
@@ -96,7 +101,7 @@ public class PlayerController : MonoBehaviour
         else if (IsGrounded() && _playerGravity.y < 0)
         {
             _playerGravity.y = _gravity;
-            _animator.SetBool("IsJumping", false);
+            _animator.SetBool("isJumping", false);
         }
 
         _characterController.Move(_playerGravity * Time.deltaTime);
@@ -111,5 +116,26 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(_sensor.position, _sensorRadius);
+    }
+
+    /*bool DeathZoneDetection()
+    {
+        return Physics.CheckSphere(_deathZone.position, _deathZoneRadius, _deathLayer);
+    }*/
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == 6)
+        {
+  
+            Death();
+        }
+    }
+    
+    void Death()
+    {
+        Debug.Log("Muerto");
+        _animator.SetTrigger("isDead");
+        this.enabled = false;  
     }
 }
