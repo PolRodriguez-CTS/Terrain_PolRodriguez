@@ -10,4 +10,13 @@ public class Ciclo : MonoBehaviour
         hours++;
         transform.rotation = Quaternion.Euler(hours * cycleSpeed * Time.deltaTime, 0, 0);
     }
+
+    void Sun()
+    {
+        //transform --> variable
+        //variable++;
+        //variable --> transform
+
+        
+    }
 }

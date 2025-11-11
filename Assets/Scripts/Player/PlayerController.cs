@@ -69,6 +69,9 @@ public class PlayerController : MonoBehaviour
         _animator.SetFloat("Horizontal", _moveValue.x);
         _animator.SetFloat("Vertical", _moveValue.y);
 
+        /*_animator.SetFloat("Horizontal", _moveValue.x);
+        _animator.SetFloat("Vertical", direction.magnitude);*/
+
         if (direction != Vector3.zero)
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + _mainCamera.eulerAngles.y;
@@ -83,7 +86,7 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
-        Debug.Log("salto");
+        //Debug.Log("salto");
         _animator.SetBool("isJumping", true);
 
         _playerGravity.y = Mathf.Sqrt(_playerJump * -2 * _gravity);
@@ -123,18 +126,18 @@ public class PlayerController : MonoBehaviour
         return Physics.CheckSphere(_deathZone.position, _deathZoneRadius, _deathLayer);
     }*/
 
-    void OnTriggerEnter(Collider other)
+    /*void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == 6)
         {
   
             Death();
         }
-    }
+    }*/
     
-    void Death()
+    public void Death()
     {
-        Debug.Log("Muerto");
+        //Debug.Log("Muerto");
         _animator.SetTrigger("isDead");
         this.enabled = false;  
     }
