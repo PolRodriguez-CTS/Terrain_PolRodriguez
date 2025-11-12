@@ -65,10 +65,6 @@ public class PlayerController : MonoBehaviour
     void Movement()
     {
         Vector3 direction = new Vector3(_moveValue.x, 0, _moveValue.y);
-
-        _animator.SetFloat("Horizontal", _moveValue.x);
-        _animator.SetFloat("Vertical", _moveValue.y);
-
         /*_animator.SetFloat("Horizontal", _moveValue.x);
         _animator.SetFloat("Vertical", direction.magnitude);*/
 
@@ -82,7 +78,10 @@ public class PlayerController : MonoBehaviour
 
             _characterController.Move(moveDirection * _playerSpeed * Time.deltaTime);
         }
+        _animator.SetFloat("Horizontal", _moveValue.x);
+        _animator.SetFloat("Vertical", _moveValue.y);
     }
+    
 
     void Jump()
     {
